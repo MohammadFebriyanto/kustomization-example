@@ -41,4 +41,4 @@ spec:
   selector:
     "app.kubernetes.io/component": "jenkins-controller"
     "app.kubernetes.io/instance": "release-name"
-  type: ClusterIP
+  type: LoadBalancer
