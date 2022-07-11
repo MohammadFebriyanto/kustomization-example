@@ -4,3 +4,5 @@ bases:
 - ../../base/
 patchesStrategicMerge:
 - service.yaml
+transformers:
+- ./kustomizeconfig/prefix-transformer.yaml
