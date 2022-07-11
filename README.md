@@ -3,7 +3,7 @@ This is an example of how [Kustomize](https://github.com/kubernetes-sigs/kustomi
 
 # Repo Structure
 ```
-├── base
+├── base                        # Contain default manifest that generated from jenkins helm chart
 │   ├── config.yaml
 │   ├── jenkins-test.yaml
 │   ├── kustomization.yaml
@@ -14,22 +14,19 @@ This is an example of how [Kustomize](https://github.com/kubernetes-sigs/kustomi
 │   ├── service.yaml
 │   ├── statefullset.yaml
 │   └── test-config.yaml
-├── overlay
-│   ├── development
+├── overlay                    # Contain some manifest changes and modification for spesific environment
+│   ├── development            # environment development
 │   │   ├── kustomization.yaml
 │   │   ├── kustomizeconfig
 │   │   │   └── prefix-transformer.yaml
 │   │   └── service.yaml
-│   └── production
+│   └── production             # environment production
 │       ├── kustomization.yaml
 │       ├── kustomizeconfig
 │       │   └── prefix-transformer.yaml
 │       └── service.yaml
 └── README.md
-```
-
-base: Contain default manifest that generated from jenkins helm chart
-overlay: Contain some manifest changes and modification for spesific environment
+``` 
 
 # How to render the yaml file from Helm?
 The YAML file basically from [Jenkins-Charts](https://github.com/jenkinsci/helm-charts). In this scenario, we use [Jenkins-Charts](https://github.com/jenkinsci/helm-charts) with version 4.1.11.
@@ -50,7 +47,7 @@ helm template charts/jenkins/ -f <your-spesific-file-values.yaml> > <somewhere-p
 ```
 
 # How to generate manifest file from kustomize?
-Just run this command `kustomize build <the-spesific-environment>`, for example:
+Just run this command `kustomize build <the-spesific-environment-path>`, for example:
 ```
 kustomize build overlay/production
 ```
